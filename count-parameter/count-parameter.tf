@@ -5,8 +5,7 @@ provider "aws" {
 }
 
 # Don't do this
-resource "aws_instance" "instance-1" {
-    ami = "ami-23"
-    instance_type = "t2.micro"
+resource "aws_iam_user" "lb" {
+    name = "instance.${count.index}"
     count = 2
 }
