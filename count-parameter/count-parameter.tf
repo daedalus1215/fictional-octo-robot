@@ -4,8 +4,14 @@ provider "aws" {
   secret_key = ""
 }
 
-# Don't do this
+variable "elb_names" {
+  type    = list(any)
+  default = ["dev-loadbalancer", "stage-loadbalancer", "prod-loadbalancer"]
+}
+
+
 resource "aws_iam_user" "lb" {
-    name = "instance.${count.index}"
-    count = 2
+  name  = var.elb_names[count.index]
+  count = 3
+  path  = "/system/"
 }
