@@ -4,12 +4,27 @@ provider "aws" {
   secret_key = ""
 }
 
-variable "istest" {
-
+locals { 
+    common_tags = {
+        Owner = "DevOps Team"
+        service = "backend"
+    }
 }
 
-resource "aws_instance" "dev" {
-  count         = var.istest == true ? 1 : 0
-  ami           = "ami-2343"
-  instance_type = "t2.micro"
+resource "aws_instance" "app-dev"   { 
+    ami = "ami-3432"
+    instance_type = "t2.micro"
+    tags = local.common_tags
+}
+
+resource "aws_instance" "db-dev"   { 
+    ami = "ami-3432"
+    instance_type = "t2.small"
+    tags = local.common_tags
+}
+
+resource "aws_ebs_volume" "db-ebs"   { 
+    availability_zone = "us-west-2a"
+    size = 8
+    tags = local.common_tags
 }
