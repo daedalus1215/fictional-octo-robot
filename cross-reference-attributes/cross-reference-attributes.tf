@@ -39,3 +39,9 @@ resource "aws_instance" "my_ec2" {
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.my_subnet.id
 }
+
+resource "aws_ec2_tag" "example" {
+  resource_id = aws_instance.my_ec2.id
+  key         = "Name"
+  value       = "tagNames"
+}

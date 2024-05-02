@@ -3,5 +3,8 @@ provider "aws" {
 }
 
 data "aws_instance" "example" {
-    
+    filter {
+        name = "tag:Name"
+        values = ["tagNames"]
+    }
 }
