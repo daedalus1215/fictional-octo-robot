@@ -7,3 +7,8 @@ resource "aws_iam_user" "lb" {
 output "arns" {
     value = aws_iam_user.lb[*].arn
 }
+
+output "name" {
+    value = aws_iam_user.lb[*].name
+}
+
