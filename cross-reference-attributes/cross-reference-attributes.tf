@@ -1,3 +1,12 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "5.48.0"
+    }
+  }
+}
+
 resource "aws_vpc" "default" {
   cidr_block = "172.31.0.0/16"
 

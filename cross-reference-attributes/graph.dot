@@ -1,0 +1,17 @@
+digraph G {
+  rankdir = "RL";
+  node [shape = rect, fontname = "sans-serif"];
+  "aws_ec2_tag.example" [label="aws_ec2_tag.example"];
+  "aws_eip.lb" [label="aws_eip.lb"];
+  "aws_instance.my_ec2" [label="aws_instance.my_ec2"];
+  "aws_security_group.allow_tls" [label="aws_security_group.allow_tls"];
+  "aws_subnet.my_subnet" [label="aws_subnet.my_subnet"];
+  "aws_vpc.default" [label="aws_vpc.default"];
+  "aws_vpc_security_group_ingress_rule.example" [label="aws_vpc_security_group_ingress_rule.example"];
+  "aws_ec2_tag.example" -> "aws_instance.my_ec2";
+  "aws_instance.my_ec2" -> "aws_subnet.my_subnet";
+  "aws_security_group.allow_tls" -> "aws_vpc.default";
+  "aws_subnet.my_subnet" -> "aws_vpc.default";
+  "aws_vpc_security_group_ingress_rule.example" -> "aws_eip.lb";
+  "aws_vpc_security_group_ingress_rule.example" -> "aws_security_group.allow_tls";
+}
