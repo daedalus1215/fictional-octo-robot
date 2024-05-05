@@ -26,6 +26,6 @@ resource "aws_security_group" "dynamicsg" {
         to_port = egress.value
         protocol = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
-    }
+    }   
   }
 }
