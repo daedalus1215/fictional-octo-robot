@@ -9,4 +9,11 @@ terraform {
 
 provider "aws" {
     region = var.region_name
+
+    default_tags {
+      tags = {
+        "Application" = "Kubernetes"
+        "Tool" = "Terragrunt-managed-resource"
+      }
+    }
 }
